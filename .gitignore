@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local journal data, backups, and attachments may contain personal or broker data.
+data/

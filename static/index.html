@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Stock Journal — local-first trading journal with CSV import and Zerodha sync" />
+<title>Stock Journal</title>
+<link rel="stylesheet" href="/static/css/app.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f1720'/%3E%3Cpath d='M7 21l6-7 5 4 7-9' stroke='%2322c55e' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+<div class="shell">
+  <!-- ================= sidebar ================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 22l7-8 5 4 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="brand-text">
+        <strong>Stock Journal</strong>
+        <span>local · private</span>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button class="nav-item" data-view="dashboard">
+        <span class="nav-ico" data-icon="grid"></span><span class="nav-label">Dashboard</span>
+      </button>
+      <button class="nav-item" data-view="stats">
+        <span class="nav-ico" data-icon="chart"></span><span class="nav-label">Stats</span>
+      </button>
+      <button class="nav-item" data-view="calendar">
+        <span class="nav-ico" data-icon="calendar"></span><span class="nav-label">Calendar</span>
+      </button>
+      <button class="nav-item" data-view="review">
+        <span class="nav-ico" data-icon="shield"></span><span class="nav-label">Review</span>
+        <span class="nav-badge hidden" id="reviewBadge">0</span>
+      </button>
+      <div class="nav-sep"></div>
+      <button class="nav-item" data-view="import">
+        <span class="nav-ico" data-icon="upload"></span><span class="nav-label">Import CSV</span>
+      </button>
+      <button class="nav-item" data-view="broker">
+        <span class="nav-ico" data-icon="plug"></span><span class="nav-label">Zerodha</span>
+        <span class="nav-dot" id="brokerDot"></span>
+      </button>
+      <button class="nav-item" data-view="settings">
+        <span class="nav-ico" data-icon="settings"></span><span class="nav-label">Settings</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="mini-stat">
+        <span class="mini-label">Open trades</span>
+        <strong id="sideOpen">—</strong>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-label">Holdings</span>
+        <strong id="sideHoldings">—</strong>
+      </div>
+      <div class="sidebar-note" id="dataPath" title="Where your data lives"></div>
+    </div>
+  </aside>
+
+  <!-- ================= main ================= -->
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" title="Menu" data-icon="menu"></button>
+      <div class="topbar-title">
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSubtitle">Your trades, performance and open risk in one place</p>
+      </div>
+      <div class="topbar-actions">
+        <div class="account-chips" id="accountChips"></div>
+        <button class="btn ghost sm" id="refreshBtn" title="Refresh data">
+          <span data-icon="refresh"></span><span class="hide-sm">Refresh</span>
+        </button>
+        <button class="btn primary" id="addTradeBtn"><span data-icon="plus"></span><span>Add trade</span></button>
+      </div>
+    </header>
+
+    <main class="view" id="view">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading your journal…</span>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- overlays -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h2 id="modalTitle">Title</h2>
+      <button class="icon-btn" id="modalClose" data-icon="close" title="Close"></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lightboxImg" alt="Trade screenshot" />
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="/static/js/util.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/stats.js"></script>
+<script src="/static/js/calendar.js"></script>
+<script src="/static/js/pages.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
