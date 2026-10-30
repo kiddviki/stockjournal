@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stock Journal by kidd—  a local-first trading journal with CSV import + Zerodha sync.
+"""Stock Journal by kidd using ai —  a local-first trading journal with CSV import + Zerodha sync.
 
 Run:  python app.py            (opens http://127.0.0.1:8765 in your browser)
       python app.py --port 9000 --no-browser
